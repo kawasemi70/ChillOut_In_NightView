@@ -54,3 +54,17 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'devise'
+
+gem 'net-smtp'
+gem 'kaminari','~> 1.2.1'
+
+#APIキー保護
+gem "dotenv-rails"
+#緯度経度の情報からマップ上にピンを刺す
+gem "gmaps4rails"
+#住所の情報を緯度経度の数値に変換
+gem "geocoder"
+#文字の配列に整数を順番に割り当てられるenumの日本語対応
+gem "enum_help"
