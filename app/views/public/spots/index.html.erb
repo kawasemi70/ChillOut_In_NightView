@@ -1,2 +1,104 @@
-<h1>Public::Spots#index</h1>
+<h1>Public::Spots#index</h1
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="mt-4 mb-4">
+        <i class="fas fa-map-marker-alt"></i>
+        地図情報
+      </h2>
+      <div class="mx-auto">
+        <input id="address" type="textbox" placeholder="住所を入力", class="rounded-pill mb-3 pr-5">
+        <input type="button" value="検索" onclick="codeAddress()">
+      </div>
+
+      <!--地図を表示-->
+      <div id='map' data-markers="<%= @markers %>"></div>
+
+      <style>
+        #map {
+          height: 600px;
+          width: 100%;
+        }
+      </style>
+
+      <script>
+        let map;
+        let marker = []; // マーカーを複数表示させたいので、配列化
+        let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
+        var markers = document.getElementById('map').dataset.markers;
+        let markerData =  JSON.parse(markers); // コントローラーで定義したインスタンス変数を変数に代入
+
+        function initMap() {
+          geocoder = new google.maps.Geocoder()
+
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 35.6585, lng: 139.7486 }, // 東京タワーを中心に表示させている
+            zoom: 12,
+          });
+
+          // 繰り返し処理でマーカーと吹き出しを複数表示させる
+          for (var i = 0; i < markerData.length; i++) {
+            let id = markerData[i]['id']
+
+            // 各地点の緯度経度を算出
+            markerLatLng = new google.maps.LatLng({
+              lat: markerData[i]['latitude'],
+              lng: markerData[i]['longitude']
+            });
+
+            // 各地点のマーカー
+            marker[i] = new google.maps.Marker({
+              position: markerLatLng,
+              map: map
+            });
+
+            // 各地点の吹き出し
+            infoWindow[i] = new google.maps.InfoWindow({
+              // 吹き出しの内容
+              content: markerData[i]['address']
+            });
+
+            // マーカーにクリックイベントを追加
+            markerEvent(i);
+          }
+        }
+
+        // マーカーをクリックしたら吹き出しを表示
+        function markerEvent(i) {
+          marker[i].addListener('click', function () {
+            infoWindow[i].open(map, marker[i]);
+          });
+        }
+
+        function codeAddress(){
+        let inputAddress = document.getElementById('address').value;
+        let infoWindow;
+        geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+          if (status == 'OK') {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+            infoWindow = new google.maps.InfoWindow({
+              // 吹き出しの内容
+              content: inputAddress
+            });
+              marker.addListener('click', function () {
+              infoWindow.open(map, marker);
+            });
+            // 下の1行を追加
+            // display.textContent = "検索結果：" + results[ 0 ].geometry.location
+          } else {
+            alert('該当する結果がありませんでした：' + status);
+          }
+        });
+      }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['MAP_KEY'] %>&callback=initMap"></script>
+      <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+      <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script>
+    </div>
+  </div>
+</div>
 <p>Find me in app/views/public/spots/index.html.erb</p>
