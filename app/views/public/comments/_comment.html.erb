@@ -1,0 +1,22 @@
+<table class="table table-hover table-inverse">
+  <tbody>
+    <% post_data.comments.each do |comment| %>
+      <tr>
+        <td>
+          <%= link_to comment.customer do %>
+            <%= image_tag comment.customer.get_profile_image(50,50), class: "rounded-circle" %>
+          <% end %>
+        </td>
+        <td><h5><%= comment.customer.customername %></h5></td>
+        <td><%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %></td>
+        <td class="col-3">
+          <% if comment.customer == current_customer %>
+            <%= link_to post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-outline-danger rounded-pill" do %>
+              削除
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

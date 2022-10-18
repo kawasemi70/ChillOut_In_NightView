@@ -11,14 +11,15 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "../stylesheets/application"
+import "../stylesheets/application";
+import "./raty.js";
 
-window.$ = window.jQuery = require('jquery');
+var jQuery = require('jquery')
+window.$ = window.jQuery = jQuery;
+
 
 
 Rails.start()
 // Turbolinks.start()
 ActiveStorage.start()
 
-window.$ = window.jQuery = require('jquery');
-require('packs/raty')

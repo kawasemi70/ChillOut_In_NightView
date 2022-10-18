@@ -23,7 +23,7 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post_comment = PostComment.new
+    @comment = Comment.new
   end
 
   def edit
@@ -49,14 +49,15 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :spot_image, :star, :address)
+    params.require(:post).permit(
+      :title, :body, :spot_image, :chillout, :atmosphere, :beautiful, :access, :congestion, :evaluation, :address)
   end
 
   def set_post
     @post = Post.find(params[:id])
   end
 
-  def ensure_correct_user
+  def ensure_correct_customer
     @post = Post.find(params[:id])
     unless @post.customer == current_customer
       redirect_to posts_path

@@ -31,8 +31,8 @@
           </script>
         </div>
       </td>
-      <td class="comments-count"><%= render "public/post_comments/counter", post_data: f %>件</td>
-      <% if user_signed_in? %>
+      <td class="comments-count"><%= render "public/comments/counter", post_data: f %>件</td>
+      <% if customer_signed_in? %>
         <td class="favorite-btn-<%= f.id %>"><%= render "public/favorites/favorite-btn", post_data: f %></td>
       <% else %>
         <td>♡<%= f.favorites.count %></td>

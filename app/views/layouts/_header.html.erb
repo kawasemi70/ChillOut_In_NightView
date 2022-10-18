@@ -101,8 +101,9 @@
               <% end %>
             </li>
              <li class="list-inline-item">
-              <%= link_to customers_guest_sign_in_path, class: "nav-link text-dark" do %>
+              <%= link_to customers_guest_sign_in_path,  class: "nav-link text-dark sign_in", method: :post  do %>
                 <i class="fas fa-user"></i>ゲストログイン
+
               <% end %>
             </li>
           </ul>

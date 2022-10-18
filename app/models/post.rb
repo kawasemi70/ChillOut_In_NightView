@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :customer
   has_many :favorites, dependent: :destroy
-  has_many :post_comments, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_one :spot, dependent: :destroy
   accepts_nested_attributes_for :spot
   geocoded_by :address
@@ -29,8 +29,8 @@ class Post < ApplicationRecord
     spot_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
   end
 
   # 検索方法分岐
