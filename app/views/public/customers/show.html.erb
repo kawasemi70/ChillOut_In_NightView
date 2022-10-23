@@ -5,7 +5,7 @@
     <div class="col-md-4">
       <div class="row">
         <h3 class="mt-4 mb-4 mr-5 pr-3">プロフィール</h3>
-        <% if @customer.customername != "guestuser" %>
+        <% if @customer.customername != "guestcustomer" %>
           <div class="mt-4 mb-4">
             <%= link_to edit_customer_path(@customer) do %>
               <h2><i class="fas fa-user-cog"></i></h2>

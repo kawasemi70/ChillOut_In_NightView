@@ -25,24 +25,24 @@ class Customer < ApplicationRecord
 
 
   def self.guest
-    find_or_create_by!(customername: 'guestuser', email: 'guest@example.com') do |customer|
+    find_or_create_by!(customername: 'guestcustomer', email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
-      customer.customername = "guestuser"
+      customer.customername = "guestcustomer"
     end
   end
 
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
-      @user = User.where("username LIKE?", "#{word}")
+      @customer = Customer.where("customername LIKE?", "#{word}")
     elsif search == "forward_match"
-      @user = User.where("username LIKE?","#{word}%")
+      @customer = Customer.where("customername LIKE?","#{word}%")
     elsif search == "backward_match"
-      @user = User.where("username LIKE?","%#{word}")
+      @customer = Customer.where("customername LIKE?","%#{word}")
     elsif search == "partial_match"
-      @user = User.where("username LIKE?","%#{word}%")
+      @customer = Customer.where("customername LIKE?","%#{word}%")
     else
-      @user = User.all
+      @customer = Customer.all
     end
   end
 

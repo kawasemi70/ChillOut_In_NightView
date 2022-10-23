@@ -1,2 +1,50 @@
 <h1>Admin::Posts#index</h1>
+<div class="container">
+  <div class="row">
+    <h2 class="mt-4 mb-4">投稿一覧</h2>
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr class="table-warning">
+          <th>画像</th>
+          <th>夜景スポット</th>
+          <th>レビュー</th>
+          <th>コメント</th>
+          <th>いいね</th>
+        </tr>
+      </thead>
+      <% @posts.each do |f| %>
+      <tbody>
+        <tr>
+          <td><%= image_tag f.get_spot_image(100, 100) %></td>
+          <td><%= link_to f.title, admin_post_path(f) %></td>
+          <td>
+            <div id="star-rate<%= f.id %>">
+              <script>
+                $('#star-rate<%= f.id %>').empty();
+                $('#star-rate<%= f.id %>').raty({
+                  size: 36,
+                  starOff: '<%= asset_path('star-off.png') %>',
+                  starOn: '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: <%= f.evaluation %>
+                });
+                 
+              </script>
+            </div>
+          </td>
+          <td class="comments-count"><%= render "public/comments/counter", post_data: f %>件</td>
+          <% if customer_signed_in? %>
+            <td class="favorite-btn-<%= f.id %>"><%= render "public/favorites/favorite-btn", post_data: f %></td>
+          <% else %>
+            <td>♡<%= f.favorites.count %></td>
+          <% end %>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+    <div class="pagination justify-content-center"><%= paginate @posts %></div>
+  </div>
+</div>
 <p>Find me in app/views/admin/posts/index.html.erb</p>

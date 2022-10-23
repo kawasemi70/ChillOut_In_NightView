@@ -1,2 +1,34 @@
 <h1>Admin::Customers#index</h1>
+<div class="container">
+  <div class="row">
+    <h2 class="mt-4 mb-4">ユーザー一覧</h2>
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr class="table-warning">
+          <th>プロフィール画像</th>
+          <th>ユーザーネーム</th>
+
+        </tr>
+      </thead>
+      <% @customers.each do |customer| %>
+      <tbody>
+        <tr>
+          <td>
+            <%= link_to admin_customer_path(customer) do %>
+              <%= image_tag customer.get_profile_image(50, 50), class: "rounded-circle" %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to admin_customer_path(customer) do %>
+              <h5><%= customer.customername %></h5>
+            <% end %>
+          </td>
+
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+    <div class="pagination justify-content-center"> <%= paginate @customers %></div>
+  </div>
+</div>
 <p>Find me in app/views/admin/customers/index.html.erb</p>

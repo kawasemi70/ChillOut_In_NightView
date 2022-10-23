@@ -1,2 +1,20 @@
 <h1>Public::Searches#search</h1>
+<div class="container">
+  <div class="row">
+    <h2 class="mt-4">"<%= @word %>"の検索結果</h2>
+    <table class="table table-hover table-inverse">
+
+    <!--検索対象モデルがCustomerの時 -->
+
+      <% if @range == "ユーザー" %>
+        <%= render "public/customers/customers", customers: @customers %>
+      <% else %>
+
+        <!--検索対象モデルがUserではない時(= 検索対象モデルがPostの時) -->
+
+        <%= render "public/posts/posts", posts: @posts %>
+      <% end %>
+    </table>
+  </div>
+</div>
 <p>Find me in app/views/public/searches/search.html.erb</p>

@@ -13,6 +13,7 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 import "./raty.js";
+import '@fortawesome/fontawesome-free/js/all'
 
 var jQuery = require('jquery')
 window.$ = window.jQuery = jQuery;

@@ -36,7 +36,7 @@
             </li>
             <li class="list-inline-item">
               <%= link_to customers_path, class: "nav-link text-dark" do %>
-                <i class="fas fa-users"></i>ユーザー一覧
+                <i class="fas fa-user"></i>ユーザー一覧
               <% end %>
             </li>
             <li class="list-inline-item">
@@ -82,7 +82,7 @@
           <ul class="list-inline">
              <li class="list-inline-item">
               <%= link_to about_path, class: "nav-link text-dark" do %>
-                <i class="fas fa-file-alt"></i>アバウトページ
+                <i class="fab fa-readme"></i>アバウトページ
               <% end %>
             </li>
             <li class="list-inline-item">
@@ -102,7 +102,7 @@
             </li>
              <li class="list-inline-item">
               <%= link_to customers_guest_sign_in_path,  class: "nav-link text-dark sign_in", method: :post  do %>
-                <i class="fas fa-user"></i>ゲストログイン
+                <i class="fas fa-user-circle"></i>ゲストログイン
 
               <% end %>
             </li>
@@ -119,9 +119,9 @@
           <% end %>
         </div>
 
-        <!--<div class="col-md-9 search-box text-center">-->
-        <!--  < %= render "public/searches/search" %>-->
-        <!--</div>-->
+        <div class="col-md-9 search-box text-center">
+          <%= render "public/searches/search" %>
+        </div>
       </div>
     <% end %>
   </div>

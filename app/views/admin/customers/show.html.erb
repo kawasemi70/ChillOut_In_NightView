@@ -1,2 +1,48 @@
 <h1>Admin::Customers#show</h1>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-4">
+      <h3 class="mt-4 mb-4">プロフィール</h3>
+      <div class="mb-3">
+        <%= image_tag @customer.get_profile_image(200, 200), class: "rounded-circle" %>
+      </div>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="col-md-5">ユーザーネーム</th>
+            <th><%= @customer.customername %></th>
+          </tr>
+          <tr>
+            <th>自己紹介</th>
+            <th><%= @customer.introduction %></th>
+          </tr>
+
+        </tbody>
+      </table>
+      <div class="row mt-4 mb-4">
+        <%= link_to "ユーザーを削除する", admin_customer_path(@customer), method: :delete, data: { confirm: "ユーザーを削除してよろしいですか？" }, class: "btn btn-outline-danger rounded-pill" %>
+      </div>
+    </div>
+
+    <div class="col-md-6 offset-sm-1">
+      <h3 class="mt-4 mb-4">投稿履歴</h3>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr class="table-warning">
+            <th>画像</th>
+            <th>夜景スポット</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customer.posts.each do |f| %>
+          <tr>
+            <td><%= image_tag f.get_spot_image(100, 100) %></td>
+            <td><%= link_to f.title, admin_post_path(f) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 <p>Find me in app/views/admin/customers/show.html.erb</p>

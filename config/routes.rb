@@ -15,8 +15,7 @@ Rails.application.routes.draw do
     resources :spots, only: [:index]
     resources :customers, only: [:index, :show, :edit, :update] do
       get 'favorites' => 'customers#favorites'
-      patch 'release' => 'customers#release'
-      patch 'nonrelease' => 'customers#nonrelease'
+
 
     end
     resources :posts do
