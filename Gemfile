@@ -68,6 +68,8 @@ end
 gem "gmaps4rails"
 #住所の情報を緯度経度の数値に変換
 gem "geocoder"
+# JSでcontrollerの変数を使えるようにする
+gem "gon"
 #文字の配列に整数を順番に割り当てられるenumの日本語対応
 gem "enum_help"
 gem 'net-smtp'
