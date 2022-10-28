@@ -1,3 +1,26 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.title {
+  font-family: cursive;
+}
+
+sub-title {
+  font-family: serif;
+}
+
+.cover {
+  height: 100%;
+  width: 100%;
+  display: table;
+  background-image: url(/assets/sample1.jpeg);
+  background-color:rgba(255,255,255,0.4);
+  background-blend-mode:lighten;
+  background-size: contain;
+}
+
+.text-center {
+  display: table-cell;
+  vertical-align: middle;
+}

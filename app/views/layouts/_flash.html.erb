@@ -1,0 +1,9 @@
+<% if flash[:notice] %>
+ <div class="mx-auto">
+  <strong><p class="notice text-center" style="color:green;"><%= flash[:notice] %></p></strong>
+ </div>
+<% elsif flash[:alert] %>
+ <div class="mx-auto">
+  <strong><p class="alert text-center" style="color:red;"><%= flash[:alert] %></p></strong>
+ </div>
+<% end %>

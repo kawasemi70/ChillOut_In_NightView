@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  # namespace :admin do
+  #   get 'tags/index'
+  # end
+  # namespace :admin do
+  #   get 'customers/index'
+  #   get 'customers/show'
+  # end
+  # namespace :admin do
+  #   get 'posts/index'
+  #   get 'posts/show'
+  # end
+  # get 'tags/index'
    #会員様
  scope module: 'public' do
     devise_for :customers,skip: [:passwords], controllers: {
@@ -12,6 +24,7 @@ Rails.application.routes.draw do
     #検索ボタンが押された時、Searchesコントローラーのsearchアクションが実行されるように定義。
     #パス名は__「search_path」__
     get 'search' => 'searches#search'
+
     resources :spots, only: [:index]
     resources :customers, only: [:index, :show, :edit, :update] do
       get 'favorites' => 'customers#favorites'
@@ -22,6 +35,11 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
+    # resources :tags do
+    #   get 'posts', to: 'posts#tag_search'
+    # end
+
+
  end
 
 
@@ -43,6 +61,7 @@ Rails.application.routes.draw do
 
     resources :customers, only: [:index, :show, :destroy]
     resources :posts, only: [:index, :show, :destroy]
+    resources :tags, only: [:index, :destroy]
 
   end
 

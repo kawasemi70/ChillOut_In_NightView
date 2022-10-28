@@ -59,7 +59,7 @@
             // 各地点の吹き出し
             infoWindow[<%= index %>] = new google.maps.InfoWindow({
               // 吹き出しの内容
-             
+
               content: "<a href='<%= post_path(post.id) %>' target='_blank'><%= post.title  %><br/><%= post.evaluation%></a>"
 
             });
@@ -104,6 +104,18 @@
       }
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['MAP_KEY'] %>&callback=initMap"></script>
+      <!--<script>-->
+      <!--          $("#star-rate< %= @post.id %>").empty();-->
+      <!--          $("#star-rate< %= @post.id %>").raty({-->
+      <!--            size: 38,-->
+      <!--            starOff: "< %= asset_path("star-off.png") %>",-->
+      <!--            starOn: "< %= asset_path("star-on.png") %>",-->
+      <!--            starHalf: '< %= asset_path('star-half.png') %>',-->
+      <!--            half: true,-->
+      <!--            readOnly: true,-->
+      <!--            score: < %= @post.evaluation %>-->
+      <!--          });-->
+      <!--        </script>-->
       <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
       <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script>
     </div>

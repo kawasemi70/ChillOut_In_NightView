@@ -1,12 +1,14 @@
-<h1>Public::Posts#index</h1>
-<div class="container">
-  <div class="row">
-    <h2 class="mt-4 mb-4">
-      <i class="fas fa-file-alt"></i>
+<% content_for(:title, t('.title')) %>
+<div class="container  mx-auto px-5 py-10 relative">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <h2>
+        <i class="fas fa-file-alt"></i>
       投稿一覧
-    </h2>
-    <%= render "posts", posts: @posts %>
-    <div class="d-flex justify-content-center"><%= paginate @posts %></div>
+      </h2>
+      <%= render "posts", posts: @posts %>
+      <div class="absolute flex justify-center inset-x-0 bottom-0"><%= paginate @posts %></div>
+    </div>
   </div>
 </div>
 <span id="back">

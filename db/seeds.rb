@@ -8,3 +8,5 @@
 Admin.create!(email: "admin@gmail.com",
              password:  "222222",
              password_confirmation: "222222")
+             
+             

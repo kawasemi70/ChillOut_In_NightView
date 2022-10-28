@@ -30,7 +30,9 @@
         <%= f.label :"夜景スポット画像" %><br>
         <%= f.file_field :spot_image, class: "mb-2" %><br>
         <%= f.label :"住所", class: "mt-4" %><br>
-        <%= f.text_field :address, class: "form-control" %>
+        <%= f.text_field :address, class: "form-control" %><br/>
+        <!--<　%= f.label :"タグ", class: "mt-4" %><br>-->
+        <!--<　%= f.text_field :tag_name, value: @tag_list,class:"form-control"%>-->
         <div class="row mt-3 mb-4">
           <%= f.submit :"更新する", class: "btn btn-outline-success rounded-pill" %>
         </div>

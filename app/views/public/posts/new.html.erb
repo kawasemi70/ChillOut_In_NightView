@@ -29,7 +29,7 @@
             <%= f.label :congestion,'穴場度（混雑度）', class:'weight-bold-text star-title' %>
           </div>
           <div class="star-form-group" id="star6">
-            <%= f.label :evaluation,'総合評価　　      　', class:'weight-bold-text star-title' %>
+            <%= f.label :evaluation,'総合評価　　     ', class:'weight-bold-text star-title' %>
           </div>
 
           <!-- 星評価javascript -->
@@ -44,7 +44,11 @@
         <%= f.label :"夜景スポット画像" %><br>
         <%= f.file_field :spot_image %><br>
         <%= f.label :"住所", class: "mt-4" %><br>
-        <%= f.text_field :address, class: "form-control" %>
+        <%= f.text_field :address, class: "form-control" %> <br>
+        <!--< %= f.label :"スペースを入力することで複数のタグを付けることができます。", class: "mt-4" %><br>-->
+        <!--< %= f.text_field :tag_name, placeholder: "山 市街地 海　工場　イルミネーション", class: "form-control" %>-->
+
+
         <div class="row mt-3 mb-4">
           <%= f.submit "投稿する", class: "mt-3 btn btn-outline-success rounded-pill" %>
         </div>

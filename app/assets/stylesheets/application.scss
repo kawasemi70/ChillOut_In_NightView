@@ -16,3 +16,73 @@
 // body {
 //   background-image: image-url("hoge.jpg");
 // }
+
+.image1 {
+ background-image: image-url('top1.png');
+}
+
+.image2 {
+ background-image: image-url('top2.png');
+}
+
+.image3 {
+ background-image: image-url('top3.png');
+}
+
+.image-skippr {
+  height: 450px;
+}
+
+.heading {
+ position: absolute;
+ z-index: 8888;
+}
+
+.heading h1 {
+ font-size: 65px;
+ font-family: 'Hachi Maru Pop', cursive;
+ font-weight: 900;
+ text-shadow: 3px 3px 0px #000;
+ text-align: center;
+ color: #3366ff;
+}
+
+.skippr-arrow {
+ z-index: 9999!important;
+}
+
+.hum-icon {
+ position: fixed;
+ top: 10px;
+ right: 30px;
+ background-color: #9999ff;
+ color: #000;
+ z-index: 99999;
+}
+
+.hum-menu {
+ position: fixed;
+ top: 0;
+ left: 0;
+ background-color: #9999ff;
+ z-index: 88888;
+}
+
+@media (max-width: 480px) {
+ .heading h1 {
+  font-size: 50px;
+  text-align: center;
+ }
+
+ .customername {
+  max-width: 100%!important;
+ }
+
+ .email {
+  max-width: 100%!important;
+ }
+
+ .password {
+  max-width: 100%!important;
+ }
+}

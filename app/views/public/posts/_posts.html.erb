@@ -8,6 +8,7 @@
       <th>レビュー</th>
       <th>コメント</th>
       <th>いいね</th>
+      <!--<th>タグ</th>-->
     </tr>
   </thead>
   <% posts.each do |f| %>
@@ -37,6 +38,9 @@
       <% else %>
         <td>♡<%= f.favorites.count %></td>
       <% end %>
+      <!--<　% f.tags.each do |tag| %>-->
+      <!--  <td>#<　%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %></td>-->
+      <!--<　% end %>-->
     </tr>
   </tbody>
   <% end %>
