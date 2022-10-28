@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   #   get 'posts/index'
   #   get 'posts/show'
   # end
-  # get 'tags/index'
+
    #会員様
  scope module: 'public' do
     devise_for :customers,skip: [:passwords], controllers: {
@@ -35,9 +35,9 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
-    # resources :tags do
-    #   get 'posts', to: 'posts#tag_search'
-    # end
+    resources :tags do
+      get 'posts', to: 'posts#tag_search'
+    end
 
 
  end

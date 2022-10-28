@@ -72,6 +72,7 @@ gem "geocoder"
 gem "gon"
 #文字の配列に整数を順番に割り当てられるenumの日本語対応
 gem "enum_help"
+
 gem 'net-smtp'
 gem "net-pop"
 gem "net-imap"

@@ -6,7 +6,7 @@
         <i class="fas fa-pencil-alt"></i>
         レビュー投稿
       </h2>
-      <%= form_with(model: @post, local: true) do |f| %>
+      <%= form_with(model: @post, url:posts_path, local: true) do |f| %>
         <%= render "layouts/errors", obj: @post %>
 
         <%= f.label :"夜景スポット名" %><br>
@@ -45,8 +45,8 @@
         <%= f.file_field :spot_image %><br>
         <%= f.label :"住所", class: "mt-4" %><br>
         <%= f.text_field :address, class: "form-control" %> <br>
-        <!--< %= f.label :"スペースを入力することで複数のタグを付けることができます。", class: "mt-4" %><br>-->
-        <!--< %= f.text_field :tag_name, placeholder: "山 市街地 海　工場　イルミネーション", class: "form-control" %>-->
+        <%= f.label :"スペースを入力することで複数のタグを付けることができます。", class: "mt-4" %><br>
+        <%= f.text_field :tag_name, placeholder: "山 市街地 海　工場　イルミネーション", class: "form-control" %>
 
 
         <div class="row mt-3 mb-4">

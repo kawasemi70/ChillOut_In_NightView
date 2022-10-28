@@ -5,19 +5,19 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page]).per(10)
-    # @tag_list = Tag.all
+    @tag_list = Tag.all
   end
 
   def new
     @post = Post.new
-    # @post = current_customer.posts.new
+    @post = current_customer.posts.new
   end
 
   def create
     @post = current_customer.posts.new(post_params)
-    # @tag_list = params[:post][:tag_name].split(nil)
+    tag_list = params[:post][:tag_name].split(nil)
     if @post.save
-      # @post.save_tag(tag_list)
+      @post.save_tag(tag_list)
       flash[:notice] = "新規投稿が完了しました"
       redirect_to post_path(@post.id)
     else
@@ -27,8 +27,8 @@ class Public::PostsController < ApplicationController
 
   def show
     @comment = Comment.new
-    # @post = Post.find(params[:id])
-    # @post_tags = @post.tags
+    @post = Post.find(params[:id])
+    @post_tags = @post.tags
   end
 
   def edit
@@ -39,28 +39,29 @@ class Public::PostsController < ApplicationController
     end
     @post = Post.find(params[:id])
     # tagの編集
-    # @tag_list=@post.tags.pluck(:tag_name).join(nil)
+    @tag_list=@post.tags.pluck(:tag_name).join(nil)
   end
 
   def update
-    @post.update(post_params)
+    post = Post.find(params[:id])
+    # @post.update(post_params)
     flash[:notice] = "投稿内容を変更しました"
     redirect_to post_path(@post.id)
     # tagの編集&削除
-    # tag_list = params[:post][:tag_name].split(nil)
-    # # もしpostの情報が更新されたら
-    # if post.update(post_params)
-    #   # このpost_idに紐づいていたタグを@oldに入れる
-    #   old_relations = TagMap.where(post_id: post.id)
-    #   # それらを取り出し、消す。
-    #   old_relations.each do |relation|
-    #     relation.delete
-    #   end
-    #   post.save_tag(tag_list)
-    #   redirect_to post_path(post.id), notice:'投稿完了しました:)'
-    # else
-    #   redirect_to :action => "edit"
-    # end
+    tag_list = params[:post][:tag_name].split(nil)
+    # もしpostの情報が更新されたら
+    if post.update(post_params)
+      # このpost_idに紐づいていたタグを@oldに入れる
+      old_relations = TagMap.where(post_id: post.id)
+      # それらを取り出し、消す。
+      old_relations.each do |relation|
+        relation.delete
+      end
+      post.save_tag(tag_list)
+      redirect_to post_path(post.id), notice:'投稿完了しました:)'
+    else
+      redirect_to :action => "edit"
+    end
   end
 
   def destroy
@@ -69,11 +70,11 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path
   end
 
-  # def search
-  #   @tag_list = Tag.all               # こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
-  #   @tag = Tag.find(params[:tag_id])  # クリックしたタグを取得
-  #   @posts = @tag.posts.all           # クリックしたタグに紐付けられた投稿を全て表示
-  # end
+  def tag_search
+    @tag_list = Tag.all               # こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
+    @tag = Tag.find(params[:tag_id])  # クリックしたタグを取得
+    @posts = @tag.posts.all           # クリックしたタグに紐付けられた投稿を全て表示
+  end
 
   # def tag_search
   #   @posts = Tag.find(params[:tag_id]).posts.all  # クリックしたタグを取得

@@ -1,10 +1,11 @@
-<!--<h3>タグの検索結果</h3>-->
+<h3>タグの検索結果</h3>
 
-<!--< % @tag_list.each do |list| %>-->
-<!--  < %= list.tag_name %>-->
-<!--  < %= "(#{list.posts.count})" %>-->
-
-<!--< % end %>-->
-<!--< % @posts.each do |post| %>-->
-<!--  < %= link_to post.title, post %>-->
-<!--< % end %>-->
+<% @tag_list.each do |list| %>
+  <%= list.tag_name %>
+  <%= "(#{list.posts.count})" %>
+<% end %>
+<br>
+<%= "#{@tag.tag_name}" %>
+<% @posts.each do |post| %>
+  <%= link_to post.title, post %>
+<% end %>

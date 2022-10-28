@@ -5,7 +5,7 @@
   <i class="fas fa-bars fa-2x"></i>
 </div>
 
-<header style="background-color: #9999ff;">
+<header style="background-color: #391B9B;">
   <div class="container">
     <div class="text-center m-2">
       <% if admin_signed_in? %>
@@ -25,32 +25,32 @@
         <div class="text-center">
           <ul class="list-inline">
             <li class="list-inline-item">
-              <%= link_to customer_path(current_customer), class: "nav-link text-dark" do %>
+              <%= link_to customer_path(current_customer), class: "nav-link text-warning" do %>
                 <i class="fas fa-user-cog"></i>マイページ
               <% end %>
             </li>
             <li class="list-inline-item">
-              <%= link_to new_post_path, class: "nav-link text-dark" do %>
+              <%= link_to new_post_path, class: "nav-link text-warning" do %>
                 <i class="fas fa-pencil-alt"></i>新規投稿
               <% end %>
             </li>
             <li class="list-inline-item">
-              <%= link_to customers_path, class: "nav-link text-dark" do %>
+              <%= link_to customers_path, class: "nav-link text-warning" do %>
                 <i class="fas fa-user"></i>ユーザー一覧
               <% end %>
             </li>
             <li class="list-inline-item">
-              <%= link_to posts_path, class: "nav-link text-dark" do %>
+              <%= link_to posts_path, class: "nav-link text-warning" do %>
                 <i class="fas fa-file-alt"></i>投稿一覧
               <% end %>
             </li>
-            <!--<li class="list-inline-item">-->
-            <!--  < %= link_to tags_path, class: "nav-link text-dark" do %>-->
-            <!--    <i class="fas fa-file-alt"></i>タグ一覧-->
-            <!--   < % end %>-->
-            <!--</li>-->
             <li class="list-inline-item">
-              <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-dark" do %>
+              <%= link_to tags_path, class: "nav-link text-warning" do %>
+                <i class="fas fa-file-alt"></i>タグ一覧
+               <% end %>
+            </li>
+            <li class="list-inline-item">
+              <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-warning" do %>
                 <i class="fas fa-sign-out-alt"></i>ログアウト
               <% end %>
             </li>
@@ -176,11 +176,11 @@
                 <i class="fas fa-file-alt"></i>投稿一覧
               <% end %>
             </li>
-            <!--<li>-->
-            <!--  < %= link_to tags_path, class: "nav-link text-dark" do %>-->
-            <!--    <i class="fas fa-file-alt"></i>タグ一覧-->
-            <!--  < % end %>-->
-            <!--</li>-->
+            <li>
+              <%= link_to tags_path, class: "nav-link text-dark" do %>
+                <i class="fas fa-file-alt"></i>タグ一覧
+              <% end %>
+            </li>
             <li>
               <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-dark" do %>
                 <i class="fas fa-sign-out-alt"></i>ログアウト
@@ -255,13 +255,13 @@
 
       <% if customer_signed_in? %>
         <div class="row mb-2">
-          <div class="col-md-3 spots_search text-center">
+          <div class="col-md-3 spots_search text-center ">
             <%= link_to spots_path do %>
-              <h5><i class="fas fa-search-location"></i>地図から探す</h5>
+              <h5><i class="fas fa-search-location text-warning"></i>地図から探す</h5>
             <% end %>
           </div>
 
-          <div class="col-md-9 search-box text-center">
+          <div class="col-md-9 search-box text-center ">
             <%= render "public/searches/search" %>
           </div>
         </div>

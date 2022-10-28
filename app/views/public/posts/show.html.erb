@@ -73,10 +73,10 @@
       <div class="comments">
         <%= render "public/comments/comment", post_data: @post %>
       </div>
-      <!--<　% @post_tags.each do |tag| %>-->
-      <!--  #<　%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>-->
-      <!--  <　%= "(#{tag.posts.count})" %>-->
-      <!--<　% end %>-->
+      <% @post_tags.each do |tag| %>
+        #<%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
+        <%= "(#{tag.posts.count})" %>
+      <% end %>
     </div>
   </div>
 </div>
