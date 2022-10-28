@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_27_074246) do
+ActiveRecord::Schema.define(version: 2022_10_09_015409) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -108,24 +108,7 @@ ActiveRecord::Schema.define(version: 2022_10_27_074246) do
     t.index ["post_id"], name: "index_spots_on_post_id"
   end
 
-  create_table "tag_maps", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "tag_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_tag_maps_on_post_id"
-    t.index ["tag_id"], name: "index_tag_maps_on_tag_id"
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "tag_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "spots", "posts"
-  add_foreign_key "tag_maps", "posts"
-  add_foreign_key "tag_maps", "tags"
 end
