@@ -49,7 +49,7 @@ class Public::PostsController < ApplicationController
     # redirect_to post_path(@post.id)
 
     # tagの編集&削除
-    tag_list = params[:post][:tag_name].split(nil)
+    tag_list = params[:post][:tag_name].split(/[[:blank:]]+/)
     # もしpostの情報が更新されたら
     if post.update(post_params)
       # このpost_idに紐づいていたタグを@oldに入れる
