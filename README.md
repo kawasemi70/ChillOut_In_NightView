@@ -41,7 +41,7 @@
  の５項目を５段階評価で表示
  - レビューにはコメントすることができる
 
- 
+
 
 
 ### ターゲットユーザ
@@ -61,6 +61,10 @@
 ## 設計書
 ER図
 https://app.diagrams.net/#G1EYV-Yc4Z8D23WbuzappQzLq7D5jMUYNi
+テーブル定義書
+https://docs.google.com/spreadsheets/d/1Ex9kwDwcQ8ad7StOgKnspVFvSpKdlAo_5WfoGf6E0vQ/edit#gid=1373217982
+アプリケーション詳細設計書
+https://docs.google.com/spreadsheets/d/1xaqe6NY1EI0u5-Q-vpQpffJiGvmERVDlVakpz-QMvlI/edit#gid=549108681
 
 
 ## 開発環境
