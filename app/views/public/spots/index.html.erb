@@ -12,6 +12,7 @@
       </div>
 
       <!--地図を表示-->
+      <div id="display">何かが表示される、、、、！</div>
       <div id='map' data-markers="<%= @markers %>"></div>
 
       <style>
@@ -27,6 +28,7 @@
         let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
         var markers = document.getElementById('map').dataset.markers;
         let markerData =  JSON.parse(markers); // コントローラーで定義したインスタンス変数を変数に代入
+        const display = document.getElementById('display')
 
         function initMap() {
           // オブジェクト（インスタンス）を生成しています。
@@ -84,17 +86,17 @@
         geocoder.geocode( { 'address': inputAddress}, function(results, status) {
           if (status == 'OK') {
             map.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-            });
-            infoWindow = new google.maps.InfoWindow({
-              // 吹き出しの内容
-              content: inputAddress
-            });
-              marker.addListener('click', function () {
-              infoWindow.open(map, marker);
-            });
+            // var marker = new google.maps.Marker({
+            //     map: map,
+            //     position: results[0].geometry.location
+            // });
+            // infoWindow = new google.maps.InfoWindow({
+            //   // 吹き出しの内容
+            //   content: inputAddress
+            // });
+            //   marker.addListener('click', function () {
+            //   infoWindow.open(map, marker);
+            // });
             // 下の1行を追加
             display.textContent = "検索結果：" + results[ 0 ].geometry.location
           } else {

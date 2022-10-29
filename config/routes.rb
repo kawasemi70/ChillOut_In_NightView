@@ -1,16 +1,6 @@
 Rails.application.routes.draw do
 
-  # namespace :admin do
-  #   get 'tags/index'
-  # end
-  # namespace :admin do
-  #   get 'customers/index'
-  #   get 'customers/show'
-  # end
-  # namespace :admin do
-  #   get 'posts/index'
-  #   get 'posts/show'
-  # end
+
 
    #会員様
  scope module: 'public' do
@@ -61,7 +51,7 @@ Rails.application.routes.draw do
 
     resources :customers, only: [:index, :show, :destroy]
     resources :posts, only: [:index, :show, :destroy]
-    resources :tags, only: [:index, :destroy]
+    resources :tags, only: [:index, :show, :destroy]
 
   end
 

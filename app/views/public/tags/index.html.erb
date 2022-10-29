@@ -11,7 +11,7 @@
       <tbody>
         <tr>
           <td>
-            <i><%= link_to list.tag_name, tag_posts_path(tag_id: list.id) %></i>
+            <%= link_to list.tag_name, tag_posts_path(tag_id: list.id) %>
             <%= "(#{list.posts.count})" %>
           </td>
         </tr>
@@ -19,11 +19,9 @@
 
       <h3 class="col-md-2 mt-4 md-4">タグ検索</h3>
         <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
-          <div class="col-md-4 mt-4 md-4">
-             <%= text_field_tag :search %>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <%= submit_tag '検索', class: "btn btn-sm col-md-2  mt-0 md-4 btn-warning"%>
-            </div>
+          <div class="col-md-8 mt-4">
+            <%= text_field_tag :search %>
+            <%= submit_tag '検索', class: "btn btn-sm btn-warning"%>
           </div>
         <% end %>
       </tbody>

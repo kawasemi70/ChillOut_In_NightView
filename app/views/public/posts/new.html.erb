@@ -8,28 +8,27 @@
       </h2>
       <%= form_with(model: @post, url:posts_path, local: true) do |f| %>
         <%= render "layouts/errors", obj: @post %>
-
         <%= f.label :"夜景スポット名" %><br>
         <%= f.text_field :title, class: "form-control" %><br>
         <%# 星評価 %>
         <div class="view-star-eval">
           <div class="star-form-group" id="star1">
-            <%= f.label :chillout,'chillout　　　    ', class:'weight-bold-text star-title' %>
+            <%= f.label :chillout,'chillout　　　    ', class:'weight-bold-text star-title', style:"width:20%" %>
           </div>
           <div class="star-form-group" id="star2">
-            <%= f.label :atmosphere,'雰囲気　　　　　', class:'weight-bold-text star-title' %>
+            <%= f.label :atmosphere,'雰囲気　　　　　', class:'weight-bold-text star-title', style:"width:20%" %>
           </div>
           <div class="star-form-group" id="star3">
-            <%= f.label :beautiful,'美しさ           ', class:'weight-bold-text star-title' %>
+            <%= f.label :beautiful,'美しさ           ', class:'weight-bold-text star-title',style:"width:20%" %>
           </div>
           <div class="star-form-group" id="star4">
-            <%= f.label :access,'アクセス　　      　', class:'weight-bold-text star-title' %>
+            <%= f.label :access,'アクセス　　      　', class:'weight-bold-text star-title', style:"width:20%"%>
           </div>
           <div class="star-form-group" id="star5">
-            <%= f.label :congestion,'穴場度（混雑度）', class:'weight-bold-text star-title' %>
+            <%= f.label :congestion,'穴場度（混雑度）', class:'weight-bold-text star-title', style:"width:20%"%>
           </div>
           <div class="star-form-group" id="star6">
-            <%= f.label :evaluation,'総合評価　　     ', class:'weight-bold-text star-title' %>
+            <%= f.label :evaluation,'総合評価　　     ', class:'weight-bold-text star-title',style:"width:20%" %>
           </div>
 
           <!-- 星評価javascript -->

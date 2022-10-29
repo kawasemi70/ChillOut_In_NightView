@@ -15,7 +15,7 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = current_customer.posts.new(post_params)
-    tag_list = params[:post][:tag_name].split(nil)
+    tag_list = params[:post][:tag_name].split(/[[:blank:]]+/)
     if @post.save
       @post.save_tag(tag_list)
       flash[:notice] = "新規投稿が完了しました"
@@ -45,8 +45,9 @@ class Public::PostsController < ApplicationController
   def update
     post = Post.find(params[:id])
     # @post.update(post_params)
-    flash[:notice] = "投稿内容を変更しました"
-    redirect_to post_path(@post.id)
+    # flash[:notice] = "投稿内容を変更しました"
+    # redirect_to post_path(@post.id)
+
     # tagの編集&削除
     tag_list = params[:post][:tag_name].split(nil)
     # もしpostの情報が更新されたら
@@ -58,9 +59,11 @@ class Public::PostsController < ApplicationController
         relation.delete
       end
       post.save_tag(tag_list)
-      redirect_to post_path(post.id), notice:'投稿完了しました:)'
+      redirect_to post_path(post.id), notice:'投稿内容を変更しました'
+      return
     else
       redirect_to :action => "edit"
+      return
     end
   end
 
