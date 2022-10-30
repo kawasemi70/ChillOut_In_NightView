@@ -38,9 +38,11 @@
       <% else %>
         <td>♡<%= f.favorites.count %></td>
       <% end %>
-      <% f.tags.each do |tag| %>
-        <td>#<%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %></td>
-      <% end %>
+      <td>
+        <% f.tags.each do |tag| %>
+          <span>#<%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %></span>
+        <% end %>
+      </td>
     </tr>
   </tbody>
   <% end %>
