@@ -1,6 +1,7 @@
 class Public::TagsController < ApplicationController
   def index
-    @tag = Tag.page(params[:page]).per(10)
+    @tags = Tag.all.page(params[:page]).per(10)
+
 
     if params[:search] != nil && params[:search] != ''
       search = params[:search]

@@ -76,3 +76,5 @@ gem "enum_help"
 gem 'net-smtp'
 gem "net-pop"
 gem "net-imap"
+# RGB, HSL変換用
+gem 'color_code'

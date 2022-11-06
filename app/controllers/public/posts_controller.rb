@@ -16,6 +16,10 @@ class Public::PostsController < ApplicationController
   def create
     @post = current_customer.posts.new(post_params)
     tag_list = params[:post][:tag_name].split(/[[:blank:]]+/)
+    rgb = Vision.get_image_data(post_params[:spot_image])
+    @post.r = rgb.r
+    @post.g = rgb.g
+    @post.b = rgb.b
     if @post.save
       @post.save_tag(tag_list)
       flash[:notice] = "新規投稿が完了しました"
@@ -24,6 +28,12 @@ class Public::PostsController < ApplicationController
       render :new
     end
   end
+
+  # rgb = Vision.get_image_data(post_params[:image])
+  #   post.r = rgb.r
+  #   post.g = rgb.g
+  #   post.b = rgb.b
+  #   post.save
 
   def show
     @comment = Comment.new
@@ -74,9 +84,10 @@ class Public::PostsController < ApplicationController
   end
 
   def tag_search
+
     @tag_list = Tag.all               # こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
-    @tag = Tag.find(params[:tag_id])  # クリックしたタグを取得
-    @posts = @tag.posts.all           # クリックしたタグに紐付けられた投稿を全て表示
+    @tag = Tag.find(params[:tag_id]) # クリックしたタグを取得
+    @posts = @tag.posts.all.page(params[:page]).per(10)           # クリックしたタグに紐付けられた投稿を全て表示
   end
 
   # def tag_search
