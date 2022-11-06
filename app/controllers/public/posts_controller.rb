@@ -57,6 +57,10 @@ class Public::PostsController < ApplicationController
     # @post.update(post_params)
     # flash[:notice] = "投稿内容を変更しました"
     # redirect_to post_path(@post.id)
+    rgb = Vision.get_image_data(post_params[:spot_image])
+    post.r = rgb.r
+    post.g = rgb.g
+    post.b = rgb.b
 
     # tagの編集&削除
     tag_list = params[:post][:tag_name].split(/[[:blank:]]+/)
